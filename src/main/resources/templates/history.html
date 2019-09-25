@@ -1,0 +1,49 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>History</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  
+<link rel="stylesheet" href="css/login.css" >
+    
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  	 <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">RJBank</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" th:href="@{/home}">Home</a>  
+        <form action="logout" class="nav-link" th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout"/>    
+    		</form>      
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Your history</h1>
+    <ul th:remove="all-but-first">
+        <li class="lead" th:each="history: *{historyList}" th:text="|*{history.sender} - *{history.receiver}
+         *{history.amount} - *{history.date}|">History</li>
+        <li>Book 2</li>
+        <li>Book 3</li>
+        <li>Book 4</li>
+        <li>Book 5</li>
+    </ul>
+    <p class="lead">
+      <a th:href="@{/home}" class="btn btn-lg btn-secondary">Go to home page</a>
+    </p>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+    	<p class="mb-1">&copy; 2019 RJBank</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

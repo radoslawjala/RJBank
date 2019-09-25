@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RJBank Info</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  
+<link rel="stylesheet" href="css/index.css" >
+    
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  	 <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">RJBank</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" th:href="@{/home}">Home</a>        
+        <a class="nav-link" th:href="@{/login}">Login</a>
+        <a class="nav-link" th:href="@{/register}">Register</a>
+        	<form action="logout" class="nav-link" th:action="@{/logout}" method="post">
+				<input type="submit" value=" Logout"/>    
+    		</form>
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Your personal data</h1>
+        <h2 th:if="*{session.info}" th:text="*{session.info}">elo</h2>
+    
+    <p th:text="*{'Login: ' + session.user.login}">Login</p>
+    <p th:text="*{'First name: ' + session.user.userDetails.firstName}">First name</p>
+    <p th:text="*{'Last name: ' + session.user.userDetails.lastName}">Last name</p>
+    <p th:text="*{'Email: ' + session.user.userDetails.email}">Email</p>
+    <p th:text="*{'Account number:  ' + session.user.userDetails.accountNumber}">Account number</p>
+    <p th:text="*{'Money: ' + session.user.userDetails.money}">Money</p>
+    <p th:text="*{'Phone number: ' + session.user.userDetails.phoneNumber}">Phone number</p>
+    <p th:text="*{'Address: ' + session.user.userDetails.address}">Address</p>
+    
+    <p class="lead">
+      <a th:href="@{/home}" class="btn btn-lg btn-secondary">Go back</a>
+    </p>
+    <p class="lead">
+      <a th:href="@{/changePassword}" class="btn btn-lg btn-secondary">Change Password</a>
+    </p>
+    
+    <p class="lead">
+      <a th:href="@{/delete}" class="btn btn-lg btn-secondary">Delete Account</a>
+    </p>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+    	<p class="mb-1">&copy; 2019 RJBank</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
+    

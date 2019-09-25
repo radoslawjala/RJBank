@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>RJBank Transaction</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  
+<link rel="stylesheet" href="css/login.css" >
+    
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  	 <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">RJBank</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" th:href="@{/home}">Home</a>  
+        <form action="logout" class="nav-link" th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout"/>    
+    		</form>      
+      </nav>
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Your account number</h1>
+    <p class="lead" th:text="${session.accountnumber}"> </p>
+    <form class="form-signin" action="#" method="post" th:action="@{/transaction}">
+		<p id="error" th:errors="${history.receiver}">Receiver error</p>
+		<p id="error" th:if="${accountNumberError}" th:text="${accountNumberError}">Invalid account number</p>
+		<p>Receiver</p>
+		<input type="text" class="form-control" maxlength="8" th:field="${history.receiver}" placeholder="Receiver" required autofocus /><br />
+		<p>Amount</p>
+		<p id="error" th:errors="${history.amount}"> Amount error</p>
+		<p id="error" th:if="${invalidAmount}" th:text="${invalidAmount}">Invalid amount</p>
+		<input th:field="${history.amount}" maxlength="8" class="form-control" type="text" placeholder="Amount" required /><br />
+		
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Send Transaction</button>
+	</form>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+    	<p class="mb-1">&copy; 2019 RJBank</p>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

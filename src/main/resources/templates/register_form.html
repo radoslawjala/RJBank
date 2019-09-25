@@ -1,0 +1,72 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sign up</title>
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  
+
+
+    <!-- Custom styles for this template -->
+<link rel="stylesheet" href="css/register.css" >
+  </head>
+  <body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">RJBank</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" th:href="@{/}">Home</a>        
+        <a class="nav-link" th:href="@{/login}">Login</a>
+        <a class="nav-link active" th:href="@{/register}">Register</a>
+      </nav>
+    </div>
+  </header>
+    <form class="form-signin" action="register" th:action="@{/register}" method="post">
+  <h1 class="h3 mb-3 font-weight-normal" id="signInLabel">Please sign up</h1>
+  
+  <p>First name</p>
+  <p id="error" th:errors="${userdetails.firstName}"> First name error</p>
+  <input type="text" th:field="${userdetails.firstName}" class="form-control" placeholder="First Name" autofocus />
+  
+  <p>Last name</p>
+  <p id="error" th:errors="${userdetails.lastName}"> Last name error</p>
+  <input type="text" th:field="${userdetails.lastName}" class="form-control" placeholder="Last Name" />
+	
+  <p>Email</p>
+  <p id="error" th:if="${incorrectEmail}" th:text="${incorrectEmail}">Invalid email try again</p>
+  <p id="error" th:errors="${userdetails.email}"> Email error</p>
+  <input type="email" th:field="${userdetails.email}" class="form-control" placeholder="Email"  />
+  
+  <p>Password</p>
+  <p id="error" th:errors="${user.password}"> Password error</p>
+  <input type="password" th:field="${user.password}" class="form-control" placeholder="Password"  />
+  
+  <p>Confirm password</p>
+  <p id="error" th:errors="${user.confirmPassword}">Confirm password error</p> 
+  <p id="error" th:if="${incorrectPassword}" th:text="${incorrectPassword}">Passwords not the same</p>
+  <input type="password" th:field="${user.confirmPassword}" class="form-control" placeholder="Confirm password"  />
+  
+  <p>How many money do you want?</p>
+  <p id="error" th:errors="${userdetails.money}"> Money error</p>
+  <input type="number" maxlength="8" th:field="${userdetails.money}" class="form-control" placeholder="Money" required />		
+  
+  <p>Phone number</p>
+  <p id="error" th:errors="${userdetails.phoneNumber}"> Phone number error</p>
+  <input type="text" maxlength="9" th:field="${userdetails.phoneNumber}" class="form-control" placeholder="Phone number"  />
+  
+  <p>Address</p>
+  <p id="error" th:errors="${userdetails.address}"> Address error</p>
+  <input type="text" th:field="${userdetails.address}" class="form-control" placeholder="Address" />
+  
+  <button class="btn btn-lg btn-primary btn-block" id="registerButton" type="submit">Sign up</button>
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019 RJBank</p>
+    
+  </footer>
+</form>
+</div>
+</body>
+</html>

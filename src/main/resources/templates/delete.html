@@ -1,0 +1,46 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Delete</title>
+    <!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">  
+
+
+    <!-- Custom styles for this template -->
+<link rel="stylesheet" href="css/login.css" >
+  </head>
+  <body class="text-center">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">RJBank</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link" th:href="@{/}">Home</a>        
+        <a class="nav-link" th:href="@{/login}">Login</a>
+        <a class="nav-link" th:href="@{/register}">Register</a>
+      </nav>
+    </div>
+  </header>
+    <form class="form-signin" action="delete" th:action="@{/delete}" method="post">
+  <h1 class="h3 mb-3 font-weight-normal" id="signInLabel">Delete your account</h1>
+  <p id="error" th:if="*{session.error}" th:text="*{session.error}">Invalid login or password, try again</p>
+  <label for="inputLogin" class="sr-only">Login</label>
+  <p>Login</p>
+  <input type="text" maxlength="6" id="inputLogin" name="username" class="form-control" placeholder="Login" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <p>Password</p>
+  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Delete</button>
+  
+</form>
+<footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2019 RJBank</p>
+    
+  </footer>
+</div>
+</body>
+</html>
