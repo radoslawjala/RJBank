@@ -8,6 +8,6 @@ public class RJBankApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RJBankApplication.class, args);
-	}
-	//
+	} 
+	//some content 
 }
